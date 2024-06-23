@@ -33,7 +33,7 @@ const Notes = () => {
   const noNote = (
     <div className="vw-100 vh-50 d-flex align-items-center justify-content-center">
       <h4>
-        No notes yet. Why not <Link to="/new_note">create one</Link>
+        No notes yet. Why not <Link to="/note">create one</Link>
       </h4>
     </div>
   );
