@@ -2,8 +2,7 @@ class Api::V1::NotesController < ApplicationController
   before_action :set_note, only: %i[show destroy]
 
   def index
-    notes = Note.all.order(created_at: :desc)
-    notes = notes.map { |note| { title: note.title, content: note.content } }
+    notes = Note.all.order(created_at: :desc).map { |note| { id: note.id, title: note.title } }
     render json: notes
   end
 

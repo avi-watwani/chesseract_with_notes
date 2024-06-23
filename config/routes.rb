@@ -8,7 +8,6 @@ Rails.application.routes.draw do
       delete '/destroy/:id', to: 'notes#destroy'
     end
   end
-  get '/*path' => 'homepage#index'
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.
@@ -16,4 +15,7 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "homepage#index"
+
+  # For unknown route, redirect to homepage. It should always be at the end of the routes.
+  get '/*path' => 'homepage#index'
 end
