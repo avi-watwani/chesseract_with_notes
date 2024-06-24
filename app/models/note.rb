@@ -1,5 +1,5 @@
 class Note < ApplicationRecord
   def title
-    content ? content.split.first : 'no content'
+    content ? CGI.unescapeHTML(content.split.first(3).join(' ')).gsub(/<\/?[^>]*>/, "") : 'no content'
   end
 end
