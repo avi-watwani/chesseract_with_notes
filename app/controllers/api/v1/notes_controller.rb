@@ -27,7 +27,7 @@ class Api::V1::NotesController < ApplicationController
   private
 
   def note_params
-    params.permit(:content)
+    params.permit(:title, :content)
   end
 
   def set_note

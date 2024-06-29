@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 const NewNote = () => {
   const navigate = useNavigate();
+  const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
 
   const stripHtmlEntities = (str) => {
@@ -20,10 +21,11 @@ const NewNote = () => {
     event.preventDefault();
     const url = "/api/v1/notes/create";
 
-    if (content.length == 0)
+    if (title.length == 0 || content.length == 0)
       return;
 
     const body = {
+      title: stripHtmlEntities(title),
       content: stripHtmlEntities(content),
     };
 
@@ -54,7 +56,18 @@ const NewNote = () => {
             Add a new note
           </h1>
           <form onSubmit={onSubmit}>
-            <label htmlFor="content">Note Content</label>
+            <div className="form-group">
+              <label htmlFor="title">Title</label>
+              <input
+                type="text"
+                name="title"
+                id="title"
+                className="form-control"
+                required
+                onChange={(event) => onChange(event, setTitle)}
+              />
+            </div>
+            <label htmlFor="content">Content</label>
             <textarea
               className="form-control"
               id="content"
