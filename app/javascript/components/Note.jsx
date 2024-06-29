@@ -23,6 +23,7 @@ const Note = () => {
     return String(str).replace(/&lt;/g, "<").replace(/&gt;/g, ">");
   };
 
+  const noteTitle = addHtmlEntities(note.title);
   const noteContent = addHtmlEntities(note.content);
 
   const deleteNote = () => {
@@ -51,6 +52,12 @@ const Note = () => {
       <div className="row">
         <div className="">
           <h5 className="">Your note content</h5>
+          <div
+            dangerouslySetInnerHTML={{
+              __html: `${noteTitle}`,
+            }}
+          />
+          <br></br>
           <div
             dangerouslySetInnerHTML={{
               __html: `${noteContent}`,
