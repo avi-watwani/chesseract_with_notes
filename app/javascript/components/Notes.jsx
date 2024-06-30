@@ -11,6 +11,10 @@ const Notes = () => {
       .then((res) => {
         if (res.ok) {
           return res.json();
+        } else if (res.status === 401) {
+          // Handle unauthorized access
+          navigate("/login"); // Redirect to sign-in page
+          throw new Error("Unauthorized access.");
         }
         throw new Error("Network response was not ok.");
       })
