@@ -1,17 +1,18 @@
 class Api::V1::NotesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_note, only: %i[show destroy]
 
   def index
-    notes = Note.all.order(created_at: :desc).map { |note| { id: note.id, title: note.title } }
+    notes = current_user.notes.order(created_at: :desc).map { |note| { id: note.id, title: note.title } }
     render json: notes
   end
 
   def create
-    note = Note.create!(note_params)
-    if note
-      render json: note
+    @note = current_user.notes.build(note_params)
+    if @note.save
+      render json: @note, status: :created
     else
-      render json: note.errors
+      render json: @note.errors, status: :unprocessable_entity
     end
   end
 
@@ -27,10 +28,10 @@ class Api::V1::NotesController < ApplicationController
   private
 
   def note_params
-    params.permit(:title, :content)
+    params.require(:note).permit(:title, :content)
   end
 
   def set_note
-    @note = Note.find_by(id: params[:id].to_i)
+    @note = current_user.notes.find_by(id: params[:id].to_i)
   end
 end

@@ -38,6 +38,30 @@ const Notes = () => {
     </div>
   );
 
+  const deleteSession = async () => {
+    try {
+      console.log('deleteSess started');
+      const url = '/users/sign_out';
+      const token = document.querySelector('meta[name="csrf-token"]').content;
+  
+      const response = await fetch(url, {
+        method: "DELETE",
+        headers: {
+          "X-CSRF-Token": token,
+          "Content-Type": "application/json",
+        },
+      });
+  
+      if (response.ok) {
+        window.location.href = "/";
+      } else {
+        throw new Error("Network response was not ok.");
+      }
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
   return (
     <>
       <section className="jumbotron jumbotron-fluid text-center">
@@ -55,6 +79,13 @@ const Notes = () => {
           <div className="row">
             {notes.length > 0 ? allNotes : noNote}
           </div>
+          <button
+            type="button"
+            className="btn btn-danger"
+            onClick={deleteSession}
+          >
+            Log out!
+          </button>
           <Link to="/" className="btn btn-link">
             Home
           </Link>
