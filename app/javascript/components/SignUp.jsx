@@ -11,10 +11,17 @@ const SignUp = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch('/users/register', {
+    const response = await fetch('/api/v1/sign_up', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ name, email, password, password_confirmation: passwordConfirmation })
+      body: JSON.stringify({
+        user: {
+          name: name,
+          email: email,
+          password: password,
+          password_confirmation: passwordConfirmation
+        }
+      })
     });
 
     if (response.ok) {
