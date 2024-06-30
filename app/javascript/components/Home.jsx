@@ -11,11 +11,12 @@ export default () => (
         </p>
         <hr className="my-4" />
         <Link
-          className="btn btn-lg custom-button disabled"
-          role="button"
+          to="/register"
+          className="btn btn-lg custom-button"
         >
-          Sign Up Now!
+          Register
         </Link>
+        <Link to="/login" className="btn btn-link">Login</Link>
       </div>
     </div>
   </div>
