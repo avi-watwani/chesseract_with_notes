@@ -9,10 +9,15 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch('/users/login', {
+    const response = await fetch('/api/v1/sign_in', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email, password })
+      body: JSON.stringify({
+        user: {
+          email: email,
+          password: password,
+        }
+      })
     });
 
     if (response.ok) {

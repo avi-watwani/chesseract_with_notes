@@ -44,8 +44,7 @@ const Notes = () => {
 
   const deleteSession = async () => {
     try {
-      console.log('deleteSess started');
-      const url = '/users/sign_out';
+      const url = '/api/v1/sign_out';
       const token = document.querySelector('meta[name="csrf-token"]').content;
   
       const response = await fetch(url, {
