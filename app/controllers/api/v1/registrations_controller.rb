@@ -4,9 +4,9 @@ class Api::V1::RegistrationsController < Devise::RegistrationsController
   respond_to :json
 
   def create
-    byebug
     user = User.new(sign_up_params)
     if user.save
+      sign_in(user)
       render json: { status: 'success', user: user }, status: :created
     else
       render json: { status: 'error', errors: user.errors.full_messages }, status: :unprocessable_entity
