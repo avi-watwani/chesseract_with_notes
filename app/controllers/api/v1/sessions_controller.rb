@@ -3,6 +3,14 @@ class Api::V1::SessionsController < Devise::SessionsController
   skip_before_action :verify_authenticity_token, raise: false
   respond_to :json
 
+  def current_user_details
+    if user_signed_in?
+      render json: { userSignedIn: true, user: current_user }, status: :ok
+    else
+      render json: { userSignedIn: false }, status: :ok
+    end
+  end
+
   def create
     user = User.find_by(email: params[:user][:email])
     if user && user.valid_password?(params[:user][:password])

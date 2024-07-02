@@ -8,6 +8,7 @@ Rails.application.routes.draw do
       get '/show/:id', to: 'notes#show'
       delete '/destroy/:id', to: 'notes#destroy'
       devise_scope :user do
+        get '/current_user_details', to: 'sessions#current_user_details'
         post '/sign_up', to: 'registrations#create'
         post '/sign_in', to: 'sessions#create'
         delete '/sign_out', to: 'sessions#destroy'

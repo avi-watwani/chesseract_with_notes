@@ -87,7 +87,7 @@ const Notes = () => {
             className="btn btn-danger"
             onClick={deleteSession}
           >
-            Log out!
+            Sign out
           </button>
           <Link to="/" className="btn btn-link">
             Home

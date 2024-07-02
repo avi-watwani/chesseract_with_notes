@@ -1,7 +1,39 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 const HomePage = () => {
+  const [isUserSignedIn, setIsUserSignedIn] = useState(false);
+  const [user, setUser] = useState(null);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const checkUserSignedIn = async () => {
+      try {
+        const response = await fetch('/api/v1/current_user_details', {
+          method: 'GET',
+          headers: { 'Content-Type': 'application/json' }
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+          if (data.userSignedIn) {
+            setIsUserSignedIn(true);
+            setUser(data.user);
+          } else {
+            setIsUserSignedIn(false);
+          }
+        } else {
+          console.error('Error checking user sign-in status');
+        }
+      } catch (error) {
+        console.error('An error occurred:', error);
+      }
+    };
+
+    checkUserSignedIn();
+  }, []);
+
   const handleLogout = async () => {
     try {
       const url = '/api/v1/sign_out';
@@ -34,7 +66,7 @@ const HomePage = () => {
             A chess website for all, learn chess from our world class tutors, play with your friends online or shop our merchs
           </p>
           <hr className="my-4" />
-          {false ? (
+          {isUserSignedIn ? (
             <button type="button" onClick={handleLogout} className="btn btn-danger">Sign out</button>
           ) : (
             <>
