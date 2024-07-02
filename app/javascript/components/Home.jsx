@@ -67,15 +67,13 @@ const HomePage = () => {
           </p>
           <hr className="my-4" />
           {isUserSignedIn ? (
-            <button type="button" onClick={handleLogout} className="btn btn-danger">Sign out</button>
+            <>
+              <button type="button" onClick={handleLogout} className="btn btn-danger">Sign out</button>
+              <Link to="/notes" className="btn btn-link">Notes</Link>
+            </>
           ) : (
             <>
-              <Link
-                to="/register"
-                className="btn btn-lg custom-button"
-              >
-                Register
-              </Link>
+              <Link to="/register" className="btn btn-lg custom-button">Register</Link>
               <Link to="/login" className="btn btn-link">Login</Link>
             </>
           )}
