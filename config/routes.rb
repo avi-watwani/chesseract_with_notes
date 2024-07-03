@@ -6,6 +6,7 @@ Rails.application.routes.draw do
       get 'notes/index'
       post 'notes/create'
       get '/show/:id', to: 'notes#show'
+      put '/update/:id', to: 'notes#edit'
       delete '/destroy/:id', to: 'notes#destroy'
       devise_scope :user do
         get '/current_user_details', to: 'sessions#current_user_details'

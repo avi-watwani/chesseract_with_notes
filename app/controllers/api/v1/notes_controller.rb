@@ -1,6 +1,6 @@
 class Api::V1::NotesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_note, only: %i[show destroy]
+  before_action :set_note, only: %i[show edit destroy]
 
   def index
     notes = current_user.notes.order(created_at: :desc).map { |note| { id: note.id, title: note.title } }
@@ -13,6 +13,14 @@ class Api::V1::NotesController < ApplicationController
       render json: @note, status: :created
     else
       render json: @note.errors, status: :unprocessable_entity
+    end
+  end
+
+  def edit
+    if @note.update(note_params)
+      render json: { success: true }
+    else
+      render json: { success: false }
     end
   end
 
