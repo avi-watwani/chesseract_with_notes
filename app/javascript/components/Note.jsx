@@ -8,6 +8,22 @@ const Note = () => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
 
+  const encodeHtmlEntities = (str) => {
+    return String(str)
+      .replace(/\n/g, "<br>")
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#039;");
+  };
+
+  const decodeHtmlEntities = (str) => {
+    const textarea = document.createElement("textarea");
+    textarea.innerHTML = str;
+    return textarea.value.replace(/<br>/g, "\n");
+  };
+
   useEffect(() => {
     const url = `/api/v1/show/${params.id}`;
     fetch(url)
@@ -20,14 +36,10 @@ const Note = () => {
       .then((response) => {
         setNote(response);
         setTitle(response.title);
-        setContent(response.content);
+        setContent(decodeHtmlEntities(response.content));
       })
       .catch(() => navigate("/notes"));
   }, [params.id]);
-
-  const addHtmlEntities = (str) => {
-    return String(str).replace(/&lt;/g, "<").replace(/&gt;/g, ">");
-  };
 
   const deleteNote = () => {
     const url = `/api/v1/destroy/${params.id}`;
@@ -61,7 +73,7 @@ const Note = () => {
 
     const updatedNote = {
       title,
-      content,
+      content: encodeHtmlEntities(content),
     };
 
     fetch(url, {

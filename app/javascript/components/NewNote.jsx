@@ -8,9 +8,12 @@ const NewNote = () => {
 
   const stripHtmlEntities = (str) => {
     return String(str)
-      .replace(/\n/g, "<br> <br>")
+      .replace(/\n/g, "<br>")
+      .replace(/&/g, "&amp;")
       .replace(/</g, "&lt;")
-      .replace(/>/g, "&gt;");
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#039;");
   };
 
   const onChange = (event, setFunction) => {
