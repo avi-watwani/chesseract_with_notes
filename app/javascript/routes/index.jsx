@@ -6,16 +6,21 @@ import Note from "../components/Note";
 import NewNote from "../components/NewNote";
 import SignUp from "../components/SignUp";
 import Login from "../components/Login";
+import NewUrl from "../components/NewUrl";
 
 export default (
   <Router>
     <Routes>
       <Route path="/" element={<Home />} />
+
       <Route path="/notes" element={<Notes />} />
       <Route path="/note/:id" element={<Note />} />
       <Route path="/note" element={<NewNote />} />
+
       <Route path="/register" element={<SignUp />} />
       <Route path="/login" element={<Login />} />
+
+      <Route path="/url-shortner" element={<NewUrl />} />
     </Routes>
   </Router>
 );
