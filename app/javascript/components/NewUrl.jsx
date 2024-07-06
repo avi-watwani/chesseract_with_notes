@@ -24,7 +24,7 @@ const NewUrl = () => {
         "X-CSRF-Token": token,
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ original_url: longUrl }), // Use the correct variable
+      body: JSON.stringify({ original: longUrl }), // Use the correct variable
     })
       .then((response) => {
         if (response.ok) {
