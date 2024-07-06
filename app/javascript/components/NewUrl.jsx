@@ -5,6 +5,7 @@ const NewUrl = () => {
   const navigate = useNavigate();
   const [shortUrl, setShortUrl] = useState("");
   const [longUrl, setLongUrl] = useState("");
+  const [isShortUrlVisible, setIsShortUrlVisible] = useState(false); // State to manage the visibility of the short URL
 
   const onChange = (event, setFunction) => {
     setFunction(event.target.value);
@@ -14,8 +15,7 @@ const NewUrl = () => {
     event.preventDefault();
     const url = "/api/v1/urls/create";
 
-    if (longUrl.length == 0)
-      return;
+    if (longUrl.length === 0) return;
 
     const token = document.querySelector('meta[name="csrf-token"]').content;
     fetch(url, {
@@ -24,7 +24,7 @@ const NewUrl = () => {
         "X-CSRF-Token": token,
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ url: url}),
+      body: JSON.stringify({ original_url: longUrl }), // Use the correct variable
     })
       .then((response) => {
         if (response.ok) {
@@ -32,7 +32,10 @@ const NewUrl = () => {
         }
         throw new Error("Network response was not ok.");
       })
-      .then((response) => setShortUrl(response.short))
+      .then((response) => {
+        setShortUrl(response.short);
+        setIsShortUrlVisible(true); // Show the short URL after successful response
+      })
       .catch((error) => console.log(error.message));
   };
 
@@ -41,11 +44,11 @@ const NewUrl = () => {
       <div className="row">
         <div className="col-sm-12 col-lg-6 offset-lg-3">
           <h1 className="font-weight-normal mb-5">
-            Create a new short url
+            Create a new Short URL
           </h1>
           <form onSubmit={onSubmit}>
             <div className="form-group">
-              <label htmlFor="longUrl">Paste your url below</label>
+              <label htmlFor="longUrl">Paste your URL below</label>
               <input
                 type="text"
                 name="longUrl"
@@ -55,10 +58,12 @@ const NewUrl = () => {
                 onChange={(event) => onChange(event, setLongUrl)}
               />
             </div>
-            <div>
-              <label htmlFor="shortUrl">Short URL</label>
-              <p>{shortUrl}</p>
-            </div>
+            {isShortUrlVisible && ( // Conditionally render the short URL
+              <div>
+                <label htmlFor="shortUrl">Short URL</label>
+                <p>{shortUrl}</p>
+              </div>
+            )}
             <button type="submit" className="btn custom-button mt-3">
               Generate Short URL
             </button>
