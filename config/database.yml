@@ -45,7 +45,8 @@ test:
 
 production:
   <<: *default
-  database: chesseract_production
-  username: 
-  password: 
+  url: <%= ENV['DATABASE_URL'] %>
+  # database: chesseract_production
+  # username: 
+  # password: 
   # Heroku sets DATABASE_URL for you, so you don't need to set the database name, username, or password here
