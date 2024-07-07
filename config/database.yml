@@ -34,18 +34,18 @@ default: &default
 development:
   <<: *default
   database: chesseract_development
-  username: your_database_username
-  password: your_database_password
+  username: 
+  password: 
 
 test:
   <<: *default
   database: chesseract_test
-  username: your_database_username
-  password: your_database_password
+  username: 
+  password: 
 
 production:
   <<: *default
   database: chesseract_production
-  username: your_database_username
-  password: your_database_password
+  username: 
+  password: 
   # Heroku sets DATABASE_URL for you, so you don't need to set the database name, username, or password here
