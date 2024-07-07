@@ -33,10 +33,18 @@ const NewUrl = () => {
         throw new Error("Network response was not ok.");
       })
       .then((response) => {
-        setShortUrl(response.short);
+        setShortUrl(`http://localhost:3000/${response.short}`);
         setIsShortUrlVisible(true); // Show the short URL after successful response
       })
       .catch((error) => console.log(error.message));
+  };
+
+  const copyToClipboard = () => {
+    navigator.clipboard.writeText(shortUrl).then(() => {
+      alert("Short URL copied to clipboard!");
+    }).catch(err => {
+      console.error("Failed to copy the text to clipboard", err);
+    });
   };
 
   return (
@@ -59,9 +67,18 @@ const NewUrl = () => {
               />
             </div>
             {isShortUrlVisible && ( // Conditionally render the short URL
-              <div>
-                <label htmlFor="shortUrl">Short URL</label>
-                <p>http://localhost:3000/{shortUrl}</p>
+              <div className="d-flex align-items-center mt-4">
+                <div>
+                  <label htmlFor="shortUrl">Short URL</label>
+                  <p>{shortUrl}</p>
+                </div>
+                <button
+                  type="button"
+                  className="btn btn-secondary btn-sm ml-2"
+                  onClick={copyToClipboard}
+                >
+                  Copy
+                </button>
               </div>
             )}
             <button type="submit" className="btn custom-button mt-3">
