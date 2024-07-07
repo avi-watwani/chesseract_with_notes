@@ -61,7 +61,7 @@ const NewUrl = () => {
             {isShortUrlVisible && ( // Conditionally render the short URL
               <div>
                 <label htmlFor="shortUrl">Short URL</label>
-                <p>{shortUrl}</p>
+                <p>http://localhost:3000/{shortUrl}</p>
               </div>
             )}
             <button type="submit" className="btn custom-button mt-3">

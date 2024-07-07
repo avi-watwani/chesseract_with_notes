@@ -17,7 +17,6 @@ Rails.application.routes.draw do
       end
 
       post 'urls/create'
-      # get '/:short', to: 'urls#redirect', as: :short
     end
   end
 
