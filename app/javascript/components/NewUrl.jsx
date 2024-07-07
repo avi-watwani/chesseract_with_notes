@@ -47,6 +47,10 @@ const NewUrl = () => {
     });
   };
 
+  const navigateToLongUrl = () => {
+    window.location.href = shortUrl;
+  };
+
   return (
     <div className="container mt-5">
       <div className="row">
@@ -68,10 +72,14 @@ const NewUrl = () => {
             </div>
             {isShortUrlVisible && ( // Conditionally render the short URL
               <div className="d-flex align-items-center mt-4">
-                <div>
-                  <label htmlFor="shortUrl">Short URL</label>
-                  <p>{shortUrl}</p>
-                </div>
+                <label htmlFor="shortUrl">Short URL:</label>
+                <button
+                  type="button"
+                  className="btn btn-link"
+                  onClick={navigateToLongUrl}
+                >
+                  {shortUrl}
+                </button>
                 <button
                   type="button"
                   className="btn btn-secondary btn-sm ml-2"
