@@ -1,10 +1,16 @@
 class Api::V1::UrlsController < ApplicationController
   def create
-    url = Url.new(url_params)
-    if url.save
-      render json: { original: url.original, short: url.short }, status: :created
+    original = url_params[:original]
+    url = Url.find_by(original: original)
+    if url
+      render json: { short: url.short }
     else
-      render json: url.errors, status: :unprocessable_entity
+      url = Url.new(url_params)
+      if url.save
+        render json: { short: url.short }, status: :created
+      else
+        render json: url.errors, status: :unprocessable_entity
+      end
     end
   end
 
