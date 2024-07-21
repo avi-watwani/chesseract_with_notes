@@ -1,8 +1,11 @@
 import React from "react";
+import './AnalysisBoard.css'
 
 const AnalysisBoard = () => {
   return(
-    <div>test</div>
+    <div className="container">
+      Analysis Board
+    </div>
   )
 };
 
