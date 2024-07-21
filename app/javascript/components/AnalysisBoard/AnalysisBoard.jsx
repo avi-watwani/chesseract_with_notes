@@ -1,12 +1,7 @@
 import React from "react";
-import './AnalysisBoard.css'
 
 const AnalysisBoard = () => {
-  return(
-    <div className="container">
-      Analysis Board
-    </div>
-  )
+  return <div>test</div>;
 };
 
 export default AnalysisBoard;
