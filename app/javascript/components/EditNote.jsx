@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 
-const Note = () => {
+const EditNote = () => {
   const params = useParams();
   const navigate = useNavigate();
   const [note, setNote] = useState({ content: "" });
@@ -139,4 +139,4 @@ const Note = () => {
   );
 };
 
-export default Note;
+export default EditNote;
