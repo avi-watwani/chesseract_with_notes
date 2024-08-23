@@ -73,3 +73,6 @@ end
 # User devise for User Auth
 gem "devise" 
 
+# To show notes in markdown
+gem 'redcarpet', '~> 3.3', '>= 3.3.4'
+gem 'coderay', '~> 1.1', '>= 1.1.3'
