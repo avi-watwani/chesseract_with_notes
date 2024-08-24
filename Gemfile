@@ -72,4 +72,3 @@ end
 
 # User devise for User Auth
 gem "devise" 
-
