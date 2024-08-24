@@ -1,3 +1,5 @@
+import remarkGfm from 'remark-gfm';
+import ReactMarkdown from 'react-markdown';
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 
@@ -38,9 +40,9 @@ const ShowNote = () => {
           <h1 className="font-weight-normal mb-5">
             {title}
           </h1>
-          <p>
-            {content}
-          </p>
+          <div className='note-content'>
+            <ReactMarkdown remarkPlugins={[remarkGfm]}>{content}</ReactMarkdown>
+          </div>
           <Link to={`/note/${note.id}/edit`} className="btn custom-button">
             Edit
           </Link>
