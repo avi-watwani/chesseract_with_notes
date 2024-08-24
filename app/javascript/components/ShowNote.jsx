@@ -43,9 +43,8 @@ const ShowNote = () => {
           <div className='note-content'>
             <ReactMarkdown remarkPlugins={[remarkGfm]}>{content}</ReactMarkdown>
           </div>
-          <Link to={`/note/${note.id}/edit`} className="btn custom-button">
-            Edit
-          </Link>
+          <Link to={`/note/${note.id}/edit`} className="btn custom-button">Edit</Link>
+          <Link to="/notes" className="btn btn-link">Back to notes</Link>
         </div>
       </div>
     </div>
