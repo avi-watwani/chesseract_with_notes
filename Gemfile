@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-ruby "2.7.8"
+ruby "3.3.4"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.1.3", ">= 7.1.3.3"
@@ -51,6 +51,9 @@ gem "bootsnap", require: false
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mswin mswin64 mingw x64_mingw ]
+
+  # To manage secret keys
+  gem 'dotenv-rails'
 end
 
 group :development do
@@ -69,4 +72,3 @@ end
 
 # User devise for User Auth
 gem "devise" 
-

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 
-const Note = () => {
+const EditNote = () => {
   const params = useParams();
   const navigate = useNavigate();
   const [note, setNote] = useState({ content: "" });
@@ -119,19 +119,21 @@ const Note = () => {
               className="form-control"
               id="content"
               name="content"
-              rows="10"
+              rows="20"
               value={content}
               onChange={(event) => onChange(event, setContent)}
             />
-            <button type="submit" className="btn custom-button mt-3">
-              Update Note
-            </button>
-            <button type="button" className="btn btn-danger mt-3" onClick={deleteNote}>
-              Delete Note
-            </button>
-            <Link to="/notes" className="btn btn-link mt-3">
-              Back to notes
-            </Link>
+            <div className="d-flex flex-wrap gap-2 mt-3">
+              <button type="submit" className="btn custom-button">
+                Update Note
+              </button>
+              <button type="button" className="btn btn-danger" onClick={deleteNote}>
+                Delete Note
+              </button>
+              <Link to="/notes" className="btn btn-link">
+                Back to Notes
+              </Link>
+            </div>
           </form>
         </div>
       </div>
@@ -139,4 +141,4 @@ const Note = () => {
   );
 };
 
-export default Note;
+export default EditNote;
