@@ -26,8 +26,6 @@ export default (
       <Route path="/analysis-board" element={<AnalysisBoard />} />
 
       <Route path="/url-shortner" element={<NewUrl />} />
-
-      <Route path="/analysis" element={<AnalysisBoard />} />
     </Routes>
   </Router>
 );
