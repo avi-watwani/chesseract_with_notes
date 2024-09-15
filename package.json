@@ -8,6 +8,8 @@
     "autoprefixer": "^10.4.19",
     "bootstrap": "^5.3.3",
     "bootstrap-icons": "^1.11.3",
+    "chess": "^1.2.2",
+    "chessboardjsx": "^2.4.7",
     "esbuild": "^0.21.5",
     "nodemon": "^3.1.4",
     "postcss": "^8.4.38",
