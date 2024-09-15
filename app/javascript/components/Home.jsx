@@ -9,9 +9,9 @@ const HomePage = () => {
   useEffect(() => {
     const checkUserSignedIn = async () => {
       try {
-        const response = await fetch('/api/v1/current_user_details', {
-          method: 'GET',
-          headers: { 'Content-Type': 'application/json' }
+        const response = await fetch("/api/v1/current_user_details", {
+          method: "GET",
+          headers: { "Content-Type": "application/json" },
         });
 
         const data = await response.json();
@@ -24,10 +24,10 @@ const HomePage = () => {
             setIsUserSignedIn(false);
           }
         } else {
-          console.error('Error checking user sign-in status');
+          console.error("Error checking user sign-in status");
         }
       } catch (error) {
-        console.error('An error occurred:', error);
+        console.error("An error occurred:", error);
       }
     };
 
@@ -36,9 +36,9 @@ const HomePage = () => {
 
   const handleLogout = async () => {
     try {
-      const url = '/api/v1/sign_out';
+      const url = "/api/v1/sign_out";
       const token = document.querySelector('meta[name="csrf-token"]').content;
-  
+
       const response = await fetch(url, {
         method: "DELETE",
         headers: {
@@ -46,7 +46,7 @@ const HomePage = () => {
           "Content-Type": "application/json",
         },
       });
-  
+
       if (response.ok) {
         window.location.href = "/";
       } else {
@@ -63,22 +63,39 @@ const HomePage = () => {
         <div className="container secondary-color">
           <h1 className="display-4">The Chesseract</h1>
           <p className="lead">
-            A chess website for all, learn chess from our world class tutors, play with your friends online or shop our merchs
+            A chess website for all, learn chess from our world class tutors,
+            play with your friends online or shop our merchs
           </p>
           <hr className="my-4" />
           {isUserSignedIn ? (
             <>
-              <button type="button" onClick={handleLogout} className="btn btn-danger">Sign out</button>
-              <Link to="/notes" className="btn btn-link">Notes</Link>
+              <button
+                type="button"
+                onClick={handleLogout}
+                className="btn btn-danger"
+              >
+                Sign out
+              </button>
+              <Link to="/notes" className="btn btn-link">
+                Notes
+              </Link>
             </>
           ) : (
             <>
-              <Link to="/register" className="btn btn-lg custom-button">Register</Link>
-              <Link to="/login" className="btn btn-link">Login</Link>
+              <Link to="/register" className="btn btn-lg custom-button">
+                Register
+              </Link>
+              <Link to="/login" className="btn btn-link">
+                Login
+              </Link>
             </>
           )}
-          <Link to="/url-shortner" className="btn btn-link">Url Shortner</Link>
-          <Link to="/analysis" className="btn btn-link">Analysis Board</Link>
+          <Link to="/url-shortner" className="btn btn-link">
+            Url Shortner
+          </Link>
+          <Link to="/analysis-board" className="btn btn-link">
+            Analysis Board
+          </Link>
         </div>
       </div>
     </div>
