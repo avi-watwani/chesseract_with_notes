@@ -8,6 +8,7 @@ import Login from "../components/Login";
 import NewUrl from "../components/NewUrl";
 import EditNote from "../components/EditNote";
 import ShowNote from "../components/ShowNote";
+import AnalysisBoard from "../components/AnalysisBoard/AnalysisBoard";
 
 export default (
   <Router>
@@ -21,6 +22,7 @@ export default (
 
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<SignUp />} />
+      <Route path="/analysis-board" element={<AnalysisBoard/>} />
 
       <Route path="/url-shortner" element={<NewUrl />} />
     </Routes>
