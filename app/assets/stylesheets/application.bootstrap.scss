@@ -1,8 +1,6 @@
 @import "bootstrap/scss/bootstrap";
 @import "bootstrap-icons/font/bootstrap-icons";
-:root {
-  --background-dark-color: #151515;
-}
+
 .bg_primary-color {
   background-color: #ffffff;
 }
@@ -41,43 +39,12 @@
   color: #555;
   margin: 10px 0;
 }
-.main-container {
-  min-height: 100vh;
-  max-height: 100vh;
-  background: #151515;
-  color: white;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
 .title {
   font-size: 24px;
   text-decoration: underline;
   color: white;
-  padding: 20px;
-  text-align: center;
 }
 .analysisBoardContainer {
-  display: flex;
-  // justify-self: space-between;
-  align-items: center;
-}
-.analysisBoard {
-  margin: 0 auto;
-}
-ul {
-  list-style-type: none;
-}
-li {
-  cursor: pointer;
-  padding: 10px;
-}
-.quick_actions_container {
-  width: 400px;
-  height: 600px;
-  background-color: #3d3954;
-}
-.quick-actions-title {
-  padding: 10px 8px;
-  font-size: 20px;
+  background: #151515;
+  color: white;
 }
