@@ -77,9 +77,6 @@ const HomePage = () => {
               <Link to="/login" className="btn btn-link">Login</Link>
             </>
           )}
-          <Link to="/url-shortner" className="btn btn-link">Url Shortner</Link>
-          <Link to="/analysis-board" className="btn btn-link">Analysis Board</Link>
-
         </div>
       </div>
     </div>

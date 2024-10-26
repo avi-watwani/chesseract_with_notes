@@ -75,7 +75,7 @@ const NewNote = () => {
               className="form-control"
               id="content"
               name="content"
-              rows="10"
+              rows="20"
               onChange={(event) => onChange(event, setContent)}
             />
             <button type="submit" className="btn custom-button mt-3">
