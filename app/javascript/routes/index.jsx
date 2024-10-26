@@ -21,7 +21,6 @@ export default (
 
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<SignUp />} />
-      <Route path="/analysis-board" element={<AnalysisBoard/>} />
 
       <Route path="/url-shortner" element={<NewUrl />} />
     </Routes>
