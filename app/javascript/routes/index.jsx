@@ -6,6 +6,7 @@ import NewNote from "../components/NewNote";
 import SignUp from "../components/SignUp";
 import Login from "../components/Login";
 import NewUrl from "../components/NewUrl";
+import AnalysisBoard from "../components/AnalysisBoard/AnalysisBoard";
 import EditNote from "../components/EditNote";
 import ShowNote from "../components/ShowNote";
 
@@ -21,6 +22,7 @@ export default (
 
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<SignUp />} />
+      <Route path="/analysis-board" element={<AnalysisBoard />} />
 
       <Route path="/url-shortner" element={<NewUrl />} />
     </Routes>
