@@ -8,7 +8,6 @@ import Login from "../components/Login";
 import NewUrl from "../components/NewUrl";
 import EditNote from "../components/EditNote";
 import ShowNote from "../components/ShowNote";
-import AnalysisBoard from "../components/AnalysisBoard/AnalysisBoard";
 
 export default (
   <Router>
