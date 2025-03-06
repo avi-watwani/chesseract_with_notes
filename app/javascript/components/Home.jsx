@@ -65,11 +65,14 @@ const HomePage = () => {
           <p className="lead">
             A chess website for all, learn chess from our world class tutors, play with your friends online or shop our merchs
           </p>
+          <p className="lead" style={{ color: 'red' }}>
+            Site under development!
+          </p>
           <hr className="my-4" />
           {isUserSignedIn ? (
             <>
               <button type="button" onClick={handleLogout} className="btn btn-danger">Sign out</button>
-              <Link to="/notes" className="btn btn-link">Notes</Link>
+              <Link to="/" className="btn btn-link">Play chess!</Link>
             </>
           ) : (
             <>
